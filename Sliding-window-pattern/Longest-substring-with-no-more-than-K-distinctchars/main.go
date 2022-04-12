@@ -1,6 +1,8 @@
 package main
 
-import "math"
+import (
+	"math"
+)
 
 func main() {
 
@@ -13,18 +15,20 @@ func LongestSubStrDis(str string, k int) int {
 
 	for windowEnd := 0; windowEnd < len(str); windowEnd++ {
 		rightChar := string(str[windowEnd])
-		if _, hasItem := distinctChars[rightChar]; !hasItem {
-			distinctChars[string(str[windowEnd])] = 0
+		if _, in := distinctChars[rightChar]; !in {
+			distinctChars[rightChar] = 0
 		}
-		distinctChars[string(str[windowEnd])] += 1
+		distinctChars[rightChar] += 1
+
 		for len(distinctChars) > k {
 			leftChar := string(str[windowStart])
 			distinctChars[leftChar] -= 1
-			if (distinctChars[leftChar]) == 0 {
+			if distinctChars[leftChar] == 0 {
 				delete(distinctChars, leftChar)
 			}
 			windowStart += 1
 		}
+
 		maximumLength = int(math.Max(float64(maximumLength), float64(windowEnd-windowStart+1)))
 	}
 
