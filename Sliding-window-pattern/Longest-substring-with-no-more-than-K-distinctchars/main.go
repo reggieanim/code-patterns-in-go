@@ -1,11 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"math"
 )
 
 func main() {
-
+	fmt.Println(Solution("aabdec", "abc"))
 }
 
 func LongestSubStrDis(str string, k int) int {

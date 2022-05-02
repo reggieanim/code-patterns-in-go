@@ -43,3 +43,9 @@ func assert(got, result int, t *testing.T) {
 	}
 	t.Errorf("got %d, expected %d", got, result)
 }
+
+func BenchmarkLongestSubStrDis(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		LongestSubStrDis("araaci", 2)
+	}
+}

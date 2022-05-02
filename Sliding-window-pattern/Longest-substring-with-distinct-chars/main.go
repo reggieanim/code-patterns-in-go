@@ -15,7 +15,7 @@ func Solution(str string) int {
 	for windowEnd := 0; windowEnd < len(str); windowEnd++ {
 		rightChar := string(str[windowEnd])
 		if _, in := distinctChars[rightChar]; in {
-			windowStart = int(math.Max(float64(distinctChars[rightChar]), float64(windowStart)))
+			windowStart = int(math.Max(float64(distinctChars[rightChar]+1), float64(windowStart)))
 		}
 		distinctChars[rightChar] = windowEnd
 
